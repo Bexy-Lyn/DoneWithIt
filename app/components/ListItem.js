@@ -13,12 +13,13 @@ export default function ListItem({
   image,
   onPress,
   renderRightActions,
+  style,
 }) {
   return (
     <GestureHandlerRootView>
       <Swipeable renderRightActions={renderRightActions}>
         <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
-          <View style={styles.container}>
+          <View style={[styles.container, style]}>
             <Image style={styles.image} source={image} />
             <View style={styles.detailsContainer}>
               <Paragraph style={styles.title}>{title}</Paragraph>
