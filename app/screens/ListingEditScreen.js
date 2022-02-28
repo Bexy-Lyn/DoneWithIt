@@ -42,12 +42,14 @@ export default function ListingEditScreen() {
           maxLength={8}
           name="price"
           placeholder="Price"
+          width="30%"
         />
         <FormSelection
           items={categories}
           name="category"
           placeholder="Category"
           numberOfLines={3}
+          width={"50%"}
         />
         <FormField name="description" placeholder="Description" />
         <SubmitButton>Post</SubmitButton>

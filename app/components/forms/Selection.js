@@ -22,6 +22,7 @@ export default function Selection({
   onSelectItem,
   onBlur,
   selectedItem,
+  width = "100%",
 }) {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -33,7 +34,7 @@ export default function Selection({
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalOpen(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width: width }]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -83,7 +84,6 @@ const styles = StyleSheet.create({
     backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
     flexDirection: "row",
-    width: "100%",
     padding: 15,
     marginVertical: 10,
   },

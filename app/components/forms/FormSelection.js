@@ -8,6 +8,7 @@ export default function FormSelection({
   name,
   items,
   onSelectItem,
+  width = "100%",
   ...otherProps
 }) {
   const { touched, errors, values, setFieldValue, setFieldTouched } =
@@ -19,6 +20,7 @@ export default function FormSelection({
         onSelectItem={(item) => setFieldValue(name, item)}
         selectedItem={values[name]}
         onBlur={() => setFieldTouched(name)}
+        width={width}
         {...otherProps}
       />
       <ErrorMessage visible={touched[name]}>{errors[name]}</ErrorMessage>
