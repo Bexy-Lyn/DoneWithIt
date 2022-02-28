@@ -4,8 +4,8 @@ import {
   Swipeable,
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
-import colors from "../config/colors";
-import Paragraph from "./Paragraph";
+import colors from "../../config/colors";
+import Paragraph from "../Paragraph";
 
 export default function ListItem({
   title,
