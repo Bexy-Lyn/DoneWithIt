@@ -27,23 +27,27 @@ export default function ListingEditScreen() {
   return (
     <Screen style={styles.container}>
       <Form
-        initialValues={{ title: "", price: 0, category: null, description: "" }}
+        initialValues={{
+          title: "",
+          price: "",
+          category: null,
+          description: "",
+        }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <FormField name="title" placeholder="Title" />
+        <FormField maxLength={255} name="title" placeholder="Title" />
         <FormField
-          autoCapitalize="none"
-          autoCorrect={false}
           keybordType="numeric"
+          maxLength={8}
           name="price"
           placeholder="Price"
-          textContentType="emailAddress"
         />
         <FormSelection
           items={categories}
           name="category"
-          placeholder={"Category"}
+          placeholder="Category"
+          numberOfLines={3}
         />
         <FormField name="description" placeholder="Description" />
         <SubmitButton>Post</SubmitButton>
