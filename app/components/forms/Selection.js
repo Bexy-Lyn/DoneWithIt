@@ -9,10 +9,10 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import defaultStyles from "../config/styles";
-import Paragraph from "./Paragraph";
-import Screen from "./Screen";
-import SelectionItem from "./SelectionItem";
+import defaultStyles from "../../config/styles";
+import Paragraph from "../Paragraph";
+import Screen from "../Screen";
+import SelectionItem from "../SelectionItem";
 
 export default function Selection({
   icon,

@@ -1,6 +1,6 @@
 import { useFormikContext } from "formik";
 import React from "react";
-import Button from "./Button";
+import Button from "../Button";
 
 export default function SubmitButton({ children }) {
   const { handleSubmit } = useFormikContext();

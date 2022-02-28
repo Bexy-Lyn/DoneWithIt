@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import colors from "../config/colors";
-import Paragraph from "./Paragraph";
+import colors from "../../config/colors";
+import Paragraph from "../Paragraph";
 
 export default function ErrorMessage({ children, visible }) {
   if (!children || !visible) return null;

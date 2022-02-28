@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
-import Paragraph from "./Paragraph";
+import Paragraph from "../Paragraph";
 
 export default function SelectionItem({ label, onPress }) {
   return (
