@@ -7,26 +7,28 @@ import Screen from "../components/Screen";
 const initialMessages = [
   {
     id: 1,
-    title: "T1",
-    description: "D1",
+    title: "vrsuzfdogcp<ihaöoSvhrozfu ihu",
+    description:
+      "D1vgzeoadipsucoiühfgvio paosdiapouf9ße8rwf0üc+jpxduivg bdi fi sjco hfipwoISJ ",
     image: require("../assets/mosh.jpg"),
   },
   {
     id: 2,
-    title: "T2",
-    description: "D2",
+    title: "T2cekuvgadfvlsknjcvhusouztrsfahvcnösodNACHFPOIERUQHGVPIUAJNCDOS",
+    description:
+      "D2VFSIHDBAPUOSnämciahvöfsbvianocpxSAPOIDOER8ZGHB JCKHV89RWTE0QFI",
     image: require("../assets/mosh.jpg"),
   },
   {
     id: 3,
-    title: "T3",
-    description: "D3",
+    title: "T3BVDGZOUEAIRPWOq",
+    description: "Dcqfwrbveclwijöqo 3",
     image: require("../assets/mosh.jpg"),
   },
   {
     id: 4,
-    title: "T4",
-    description: "D4",
+    title: "Tbguozadfzp9s80üLPSD<Ü#YVOJFHOIPURTIZRE9P8AVOÜJ4",
+    description: "Db uifhperowöamfvc4",
     image: require("../assets/mosh.jpg"),
   },
 ];
@@ -51,6 +53,7 @@ export default function MessagesScreen() {
             subTitle={item.description}
             image={item.image}
             onPress={() => console.log(item.title)}
+            showChevron
             renderRightActions={() => (
               <ListItemDeleteAction onPress={() => remove(item)} />
             )}
