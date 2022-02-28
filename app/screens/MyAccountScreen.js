@@ -1,47 +1,65 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 
 import ListItem from "../components/ListItem";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
-import IconAction from "../components/IconAction";
+import Icon from "../components/Icon";
 import Divider from "../components/Divider";
+
+const menuItems = [
+  {
+    title: "My Listings",
+    icon: {
+      name: "format-list-bulleted",
+      backgroundColor: colors.primary,
+    },
+  },
+  {
+    title: "My Messages",
+    icon: {
+      name: "email",
+      backgroundColor: colors.secondary,
+    },
+  },
+];
 
 export default function MyAccountScreen() {
   const avatar = require("../assets/mosh.jpg");
   return (
     <Screen style={styles.screen}>
-      <ListItem
-        title="Mosh Hamedani"
-        subTitle="programingwithmosh@gmail.com"
-        image={avatar}
-        style={styles.field}
-      />
-      <View style={[styles.field, styles.tabContainer]}>
-        <IconAction
-          iconName="format-list-bulleted"
-          iconColor="primary"
-          onPress={() => console.log("Listings clicked")}
-        >
-          My Listings
-        </IconAction>
-        <Divider />
-        <IconAction
-          iconName="email"
-          iconColor="secondary"
-          onPress={() => console.log("Messages clicked")}
-        >
-          My Messages
-        </IconAction>
+      <View style={styles.container}>
+        <ListItem
+          title="Mosh Hamedani"
+          subTitle="programmingwithmosh@hmail.com"
+          image={avatar}
+        />
       </View>
-      <View style={styles.field}>
-        <IconAction
-          iconName="logout"
-          iconColor="warning"
-          onPress={() => console.log("Logout clicked")}
-        >
-          Logout
-        </IconAction>
+      <View style={styles.container}>
+        <FlatList
+          data={menuItems}
+          keyExtractor={(menuItem) => menuItem.title}
+          renderItem={({ item }) => (
+            <ListItem
+              title={item.title}
+              IconComponent={
+                <Icon
+                  name={item.icon.name}
+                  backgroundColor={item.icon.backgroundColor}
+                />
+              }
+            />
+          )}
+          ItemSeparatorComponent={() => <Divider />}
+        />
+      </View>
+      <View style={styles.container}>
+        <ListItem
+          title="Logout"
+          IconComponent={
+            <Icon name="logout" backgroundColor={colors.warning} />
+          }
+        />
       </View>
     </Screen>
   );
@@ -49,12 +67,9 @@ export default function MyAccountScreen() {
 const styles = StyleSheet.create({
   screen: {
     backgroundColor: colors.light,
-    marginTop: 20,
   },
-  field: {
+  container: {
+    marginVertical: 20,
     backgroundColor: colors.white,
-  },
-  tabContainer: {
-    marginVertical: 30,
   },
 });

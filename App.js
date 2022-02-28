@@ -6,5 +6,5 @@ import MyAccountScreen from "./app/screens/MyAccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
 
 export default function App() {
-  return <ListingsScreen />;
+  return <MyAccountScreen />;
 }
