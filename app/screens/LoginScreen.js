@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Image } from "react-native";
-import { Formik } from "formik";
+import Form from "../components/Form";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
@@ -17,35 +17,31 @@ export default function LoginScreen() {
   return (
     <Screen style={styles.container}>
       <Image style={styles.logo} source={logo} />
-      <Formik
+      <Form
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        {() => (
-          <>
-            <FormField
-              autoCapitalize="none"
-              autoCorrect={false}
-              icon="email"
-              keybordType="email-address"
-              name="email"
-              placeholder="Email"
-              textContentType="emailAddress"
-            />
-            <FormField
-              autoCapitalize="none"
-              autoCorrect={false}
-              icon="lock"
-              name="password"
-              placeholder="Password"
-              secureTextEntry
-              textContentType="password"
-            />
-            <SubmitButton>Login</SubmitButton>
-          </>
-        )}
-      </Formik>
+        <FormField
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon="email"
+          keybordType="email-address"
+          name="email"
+          placeholder="Email"
+          textContentType="emailAddress"
+        />
+        <FormField
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon="lock"
+          name="password"
+          placeholder="Password"
+          secureTextEntry
+          textContentType="password"
+        />
+        <SubmitButton>Login</SubmitButton>
+      </Form>
     </Screen>
   );
 }
