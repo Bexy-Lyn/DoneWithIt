@@ -23,6 +23,7 @@ export default function Selection({
   onBlur,
   selectedItem,
   width = "100%",
+  numColumns = 1,
 }) {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -60,13 +61,15 @@ export default function Selection({
       </TouchableWithoutFeedback>
       <Modal visible={modalOpen} animationType="slide">
         <Screen>
-          <Button onPress={close}>Close</Button>
           <FlatList
             data={items}
             keyExtractor={(item) => item.value.toString()}
+            contentContainerStyle={numColumns > 1 && styles.gallery}
+            numColumns={numColumns}
             renderItem={({ item }) => (
               <SelectionItem
                 label={item.label}
+                icon={item.icon}
                 onPress={() => {
                   close();
                   onSelectItem(item);
@@ -74,6 +77,11 @@ export default function Selection({
               />
             )}
           />
+          <View style={styles.buttonContainer}>
+            <Button onPress={close} color="medium">
+              Close
+            </Button>
+          </View>
         </Screen>
       </Modal>
     </>
@@ -86,6 +94,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 15,
     marginVertical: 10,
+  },
+  gallery: {
+    flex: 1,
+    alignItems: "center",
+  },
+  buttonContainer: {
+    padding: 20,
   },
   text: {
     flex: 1,

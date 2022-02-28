@@ -18,9 +18,78 @@ const validationSchema = Yup.object().shape({
 });
 
 const categories = [
-  { label: "Furniture", value: 1 },
-  { label: "Clothing", value: 2 },
-  { label: "Books", value: 3 },
+  {
+    value: 1,
+    label: "Furniture",
+    icon: {
+      name: "floor-lamp",
+      color: "#fc5c65",
+    },
+  },
+  {
+    value: 2,
+    label: "Cars",
+    icon: {
+      name: "car",
+      color: "#fd9644",
+    },
+  },
+  {
+    value: 3,
+    label: "Cameras",
+    icon: {
+      name: "camera",
+      color: "#fed330",
+    },
+  },
+  {
+    value: 4,
+    label: "Games",
+    icon: {
+      name: "cards",
+      color: "#26de81",
+    },
+  },
+  {
+    value: 5,
+    label: "Clothing",
+    icon: {
+      name: "shoe-heel",
+      color: "#2bcbba",
+    },
+  },
+  {
+    value: 6,
+    label: "Sports",
+    icon: {
+      name: "basketball",
+      color: "#45aaf2",
+    },
+  },
+  {
+    value: 7,
+    label: "Movies & Music",
+    icon: {
+      name: "headphones",
+      color: "#4b7bec",
+    },
+  },
+  {
+    value: 8,
+    label: "Books",
+    icon: {
+      name: "book-open-variant",
+      color: "#aa55ff",
+    },
+  },
+  {
+    value: 9,
+    label: "Other",
+    icon: {
+      name: "dots-vertical",
+      color: "#888899",
+    },
+  },
 ];
 
 export default function ListingEditScreen() {
@@ -48,10 +117,14 @@ export default function ListingEditScreen() {
           items={categories}
           name="category"
           placeholder="Category"
-          numberOfLines={3}
           width={"50%"}
+          numColumns={3}
         />
-        <FormField name="description" placeholder="Description" />
+        <FormField
+          name="description"
+          numberOfLines={3}
+          placeholder="Description"
+        />
         <SubmitButton>Post</SubmitButton>
       </Form>
     </Screen>
