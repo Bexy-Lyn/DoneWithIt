@@ -4,7 +4,6 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
   Modal,
-  Button,
   FlatList,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -13,15 +12,23 @@ import defaultStyles from "../../config/styles";
 import Paragraph from "../Paragraph";
 import Screen from "../Screen";
 import SelectionItem from "./SelectionItem";
+import Button from "../Button";
+import colors from "../../config/colors";
 
 export default function Selection({
   icon,
   placeholder,
   items,
   onSelectItem,
+  onBlur,
   selectedItem,
 }) {
   const [modalOpen, setModalOpen] = useState(false);
+
+  const close = () => {
+    setModalOpen(false);
+    onBlur();
+  };
 
   return (
     <>
@@ -35,7 +42,12 @@ export default function Selection({
               style={styles.icon}
             />
           )}
-          <Paragraph style={styles.text}>
+          <Paragraph
+            style={[
+              styles.text,
+              { color: selectedItem ? colors.dark : colors.medium },
+            ]}
+          >
             {selectedItem ? selectedItem.label : placeholder}
           </Paragraph>
           <MaterialCommunityIcons
@@ -47,7 +59,7 @@ export default function Selection({
       </TouchableWithoutFeedback>
       <Modal visible={modalOpen} animationType="slide">
         <Screen>
-          <Button title="close" onPress={() => setModalOpen(false)} />
+          <Button onPress={close}>Close</Button>
           <FlatList
             data={items}
             keyExtractor={(item) => item.value.toString()}
@@ -55,7 +67,7 @@ export default function Selection({
               <SelectionItem
                 label={item.label}
                 onPress={() => {
-                  setModalOpen(false);
+                  close();
                   onSelectItem(item);
                 }}
               />

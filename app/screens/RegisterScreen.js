@@ -25,6 +25,7 @@ export default function RegisterScreen() {
           icon="account"
           name="name"
           placeholder="Name"
+          textContentType="username"
         />
         <FormField
           autoCapitalize="none"
