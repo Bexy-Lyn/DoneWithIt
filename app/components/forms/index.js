@@ -6,3 +6,4 @@ export { default as Input } from "./Input";
 export { default as Selection } from "./Selection";
 export { default as SelectionItem } from "./SelectionItem";
 export { default as SubmitButton } from "./SubmitButton";
+export { default as FormImagePicker } from "./FormImagePicker";

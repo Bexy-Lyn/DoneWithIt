@@ -8,9 +8,11 @@ import {
   FormField,
   SubmitButton,
   FormSelection,
+  FormImagePicker,
 } from "../components/forms";
 
 const validationSchema = Yup.object().shape({
+  images: Yup.array().min(1, "Please select at least one image."),
   title: Yup.string().required().min(1).label("Title"),
   price: Yup.number().required().min(1).max(10000).label("Price"),
   category: Yup.object().nullable().required().label("Category"),
@@ -101,10 +103,12 @@ export default function ListingEditScreen() {
           price: "",
           category: null,
           description: "",
+          images: [],
         }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
+        <FormImagePicker name="images" />
         <FormField maxLength={255} name="title" placeholder="Title" />
         <FormField
           keybordType="numeric"
