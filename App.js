@@ -1,15 +1,13 @@
-import WelcomeScreen from "./app/screens/WelcomeScreen";
-import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
-import MessagesScreen from "./app/screens/MessagesScreen";
-import MyAccountScreen from "./app/screens/MyAccountScreen";
-import ListingsScreen from "./app/screens/ListingsScreen";
-import LoginScreen from "./app/screens/LoginScreen";
-import RegisterScreen from "./app/screens/RegisterScreen";
-import ListingEditScreen from "./app/screens/ListingEditScreen";
-import ViewImageScreen from "./app/screens/ViewImageScreen";
-import Screen from "./app/components/Screen";
-import ImageInputList from "./app/components/forms/ImageInputList";
+import { NavigationContainer } from "@react-navigation/native";
+
+import AuthNavigator from "./app/navigation/AuthNavigator";
+import TabNavigator from "./app/navigation/TabNavigator";
+import navigationTheme from "./app/navigation/navigationTheme";
 
 export default function App() {
-  return <ListingEditScreen />;
+  return (
+    <NavigationContainer theme={navigationTheme}>
+      <TabNavigator />
+    </NavigationContainer>
+  );
 }

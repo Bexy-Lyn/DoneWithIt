@@ -3,9 +3,10 @@ import { ImageBackground, StyleSheet, View, Image, Text } from "react-native";
 
 import Button from "../components/Button";
 
-export default function WelcomeScreen(props) {
+export default function WelcomeScreen({ navigation }) {
   const bg = require("../assets/background.jpg");
   const logo = require("../assets/logo-red.png");
+
   return (
     <ImageBackground source={bg} style={styles.background} blurRadius={6}>
       <View style={styles.logoContianer}>
@@ -13,8 +14,11 @@ export default function WelcomeScreen(props) {
         <Text style={styles.tagLine}>Sell what you don't need</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <Button onPress={() => console.log("clicked")}>Login</Button>
-        <Button color="secondary" onPress={() => console.log("clicked")}>
+        <Button onPress={() => navigation.navigate("Login")}>Login</Button>
+        <Button
+          color="secondary"
+          onPress={() => navigation.navigate("Register")}
+        >
           Register
         </Button>
       </View>

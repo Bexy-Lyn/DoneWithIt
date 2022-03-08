@@ -4,13 +4,14 @@ import ListItem from "../components/lists/ListItem";
 import Paragraph from "../components/Paragraph";
 import colors from "../config/colors";
 
-export default function ListingDetailsScreen() {
+export default function ListingDetailsScreen({ route }) {
+  const listing = route.params;
   return (
     <View>
-      <Image style={styles.image} source={require("../assets/jacket.jpg")} />
+      <Image style={styles.image} source={listing.image} />
       <View style={styles.detailsContainer}>
-        <Paragraph style={styles.title}>Red jacket for sale</Paragraph>
-        <Paragraph style={styles.price}>$100</Paragraph>
+        <Paragraph style={styles.title}>{listing.title}</Paragraph>
+        <Paragraph style={styles.price}>$ {listing.price}</Paragraph>
         <View style={styles.userContainer}>
           <ListItem
             image={require("../assets/mosh.jpg")}

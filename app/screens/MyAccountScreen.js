@@ -9,6 +9,7 @@ import { Divider, ListItem } from "../components/lists";
 const menuItems = [
   {
     title: "My Listings",
+    linkTo: "",
     icon: {
       name: "format-list-bulleted",
       backgroundColor: colors.primary,
@@ -16,6 +17,7 @@ const menuItems = [
   },
   {
     title: "My Messages",
+    linkTo: "Messages",
     icon: {
       name: "email",
       backgroundColor: colors.secondary,
@@ -23,7 +25,7 @@ const menuItems = [
   },
 ];
 
-export default function MyAccountScreen() {
+export default function MyAccountScreen({ navigation }) {
   const avatar = require("../assets/mosh.jpg");
   return (
     <Screen style={styles.screen}>
@@ -41,6 +43,7 @@ export default function MyAccountScreen() {
           renderItem={({ item }) => (
             <ListItem
               title={item.title}
+              onPress={() => navigation.navigate(item.linkTo)}
               IconComponent={
                 <Icon
                   name={item.icon.name}

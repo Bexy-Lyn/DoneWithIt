@@ -11,12 +11,17 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label("Password"),
 });
 
-export default function RegisterScreen() {
+export default function RegisterScreen({ navigation }) {
+  const register = (values) => {
+    // handle register
+    navigation.navigate("Home");
+  };
+
   return (
     <Screen style={styles.container}>
       <Form
         initialValues={{ name: "", email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={register}
         validationSchema={validationSchema}
       >
         <FormField
