@@ -5,6 +5,7 @@ import Screen from "../components/Screen";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import { Divider, ListItem } from "../components/lists";
+import routes from "../navigation/routes";
 
 const menuItems = [
   {
@@ -17,7 +18,7 @@ const menuItems = [
   },
   {
     title: "My Messages",
-    linkTo: "Messages",
+    linkTo: routes.MESSAGES,
     icon: {
       name: "email",
       backgroundColor: colors.secondary,

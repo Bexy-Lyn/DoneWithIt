@@ -1,12 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TouchableHighlight } from "react-native";
 
 import colors from "../config/colors";
 import { ListingEditScreen } from "../screens";
 import ListingsNavigator from "./ListingsNavigator";
 import AccountNavigator from "./AccountNavigator";
 import TabActionButton from "./TabActionButton";
+import routes from "./routes";
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
@@ -23,24 +23,24 @@ const TabNavigator = () => (
           <MaterialCommunityIcons size={size} color={color} name="home" />
         ),
       }}
-      name="Feed"
+      name={routes.FEED}
       component={ListingsNavigator}
     />
     <Tab.Screen
-      name="ListingEdit"
+      name={routes.LISTING_EDIT}
       tabBarAccessibilityLabel="Add a Listing"
       component={ListingEditScreen}
       options={({ navigation }) => ({
         tabBarButton: () => (
           <TabActionButton
-            onPress={() => navigation.navigate("ListingEdit")}
+            onPress={() => navigation.navigate(routes.LISTING_EDIT)}
             icon="plus-circle"
           />
         ),
       })}
     />
     <Tab.Screen
-      name="Account"
+      name={routes.PROFILE}
       component={AccountNavigator}
       options={{
         tabBarIcon: ({ size, color }) => (

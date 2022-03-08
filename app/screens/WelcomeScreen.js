@@ -2,6 +2,7 @@ import React from "react";
 import { ImageBackground, StyleSheet, View, Image, Text } from "react-native";
 
 import Button from "../components/Button";
+import routes from "../navigation/routes";
 
 export default function WelcomeScreen({ navigation }) {
   const bg = require("../assets/background.jpg");
@@ -14,10 +15,10 @@ export default function WelcomeScreen({ navigation }) {
         <Text style={styles.tagLine}>Sell what you don't need</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <Button onPress={() => navigation.navigate("Login")}>Login</Button>
+        <Button onPress={() => navigation.navigate(routes.LOGIN)}>Login</Button>
         <Button
           color="secondary"
-          onPress={() => navigation.navigate("Register")}
+          onPress={() => navigation.navigate(routes.REGISTER)}
         >
           Register
         </Button>

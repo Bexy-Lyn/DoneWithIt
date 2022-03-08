@@ -10,12 +10,11 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label("Password"),
 });
 
-export default function LoginScreen({ navigation }) {
+export default function LoginScreen() {
   const logo = require("../assets/logo-red.png");
 
   const login = (values) => {
     // handle login
-    navigation.navigate("Home");
   };
 
   return (
