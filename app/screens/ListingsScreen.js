@@ -8,13 +8,18 @@ import routes from "../navigation/routes";
 import listingsApi from "../api/listings";
 import Paragraph from "../components/Paragraph";
 import Button from "../components/Button";
+import Loader from "../components/Loader";
 
 export default function ListingsScreen({ navigation }) {
   const [listings, setListings] = useState([]);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   loadListings = async () => {
+    setLoading(true);
     const res = await listingsApi.getListings();
+    setLoading(false);
+
     if (!res.ok) return setError(true);
     else {
       setError(false);
@@ -34,6 +39,7 @@ export default function ListingsScreen({ navigation }) {
           <Button onPress={loadListings}>Retry</Button>
         </>
       )}
+      <Loader visible={loading} />
       <FlatList
         style={styles.list}
         data={listings}
