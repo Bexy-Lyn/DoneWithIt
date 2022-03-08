@@ -9,40 +9,26 @@ import listingsApi from "../api/listings";
 import Paragraph from "../components/Paragraph";
 import Button from "../components/Button";
 import Loader from "../components/Loader";
+import useApi from "../hooks/useApi";
 
 export default function ListingsScreen({ navigation }) {
-  const [listings, setListings] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  loadListings = async () => {
-    setLoading(true);
-    const res = await listingsApi.getListings();
-    setLoading(false);
-
-    if (!res.ok) return setError(true);
-    else {
-      setError(false);
-      setListings(res.data);
-    }
-  };
-
-  useEffect(() => loadListings(), []);
+  const listings = useApi(listingsApi.getListings);
+  useEffect(() => listings.request(), []);
 
   return (
     <Screen style={styles.screen}>
-      {error && (
+      {listings.error && (
         <>
           <Paragraph style={{ textAlign: "center", padding: 10 }}>
             Couldn't retrieve the listings.
           </Paragraph>
-          <Button onPress={loadListings}>Retry</Button>
+          <Button onPress={listings.request()}>Retry</Button>
         </>
       )}
-      <Loader visible={loading} />
+      <Loader visible={listings.loading} />
       <FlatList
         style={styles.list}
-        data={listings}
+        data={listings.data}
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
           <Card
